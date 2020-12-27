@@ -1,30 +1,49 @@
 <%- include("partials/header") -%>
 
-
-<div class = "ui main container"> 
-    
-    
-    <div class = "ui main text container">
-        <h1 class = "ui header">
-        BLOG HEADER
+<div class = "ui main container">
+    <h1 class = "ui header">
+        Home Page
         <div class = "sub header">
-            2 days ago, by qalaiqalai
+            Be a part of the world ...
         </div>
     </h1>
-        <div class = "ui image container">
-            <img src = "https://im-media.voltron.voanews.com/Drupal/01live-166/styles/892x501/s3/2020-01/reuters_cdc_coronavirus_29Jan20.jpg?itok=A6lB_FX0" class = "">    
-        </div>
-        <p>
-            Reports from Britain and South Africa of new coronavirus strains that seem to spread more easily are causing alarm, but virus experts say it's unclear if that's the case or whether they pose any concern for vaccines or cause more severe disease.
-        </p>
-        <p>Viruses naturally evolve as they move through the population, some more than others. It's one reason we need a fresh flu shot each year.Reports from Britain and South Africa of new coronavirus strains that seem to spread more easily are causing alarm, but virus experts say it's unclear if that's the case or whether they pose any concern for vaccines or cause more severe disease.Viruses naturally evolve as they move through the population, some more than others. It's one reason we need a fresh flu shot each year.
-        </p>
-        <p>
-        Reports from Britain and South Africa of new coronavirus strains that seem to spread more easily are causing alarm, but virus experts say it's unclear if that's the case or whether they pose any concern for vaccines or cause more severe disease.Viruses naturally evolve as they move through the population, some more than others. It's one reason we need a fresh flu shot each year.
-        </p>
+    <a type = "button" class = "ui floated right primary button" href = "/new">
+        Create!
+    </a>
+    
+    <div class="ui divided items container">
+        
+        <% for(var i = 0; i < blogs.length; i++){ %>
+        
+            <div class="item">
+                <div class="image">
+                    <img src="<%=blogs[i].image%>">
+                </div>
+                <div class="content">
+                    <a class="header" href = "/blogs/<%=blogs[i]._id %>"><%= blogs[i].name %></a>
+                    <div class="meta">
+                        <span>2 days ago</span>
+                        <p class="ui right floated meta">by <%= blogs[i].author.username %></p>  
+                    </div>
+                    <div class="description">
+                        <p>
+                        <%= blogs[i].description %>
+                        </p>
+                    </div>
+                    <div class="extra">
+                        <a href = "/blogs/<%=blogs[i]._id %>">Show more..</a>
+                    </div>
+                </div>
+            </div>
+        <%}%>
+        
+        
+        
+      
     </div>
     
 </div>
+
 
 
 <%- include("partials/footer") -%>

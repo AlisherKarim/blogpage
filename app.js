@@ -51,6 +51,21 @@ app.get('/', function(req, res){
     })
 })
 
+app.get("/me", isLoggedIn, function(req, res){
+    var user = req.user
+    console.log(user)
+    Blog.find({}, function(err, blogs){
+        if(err){
+            console.error(err)
+            res.redirect("/")
+        }else{
+            let all = blogs.filter( (blog) => (blog.author.id.equals(req.user.id)))
+            //console.log(all)
+            res.render("blog", {blogs : all, user : req.user});
+        }
+    })
+})
+
 app.get("/login", alreadyLoggedIn, function(req, res){
     res.render("login", {user : null});
 })
@@ -93,7 +108,7 @@ app.get("/blogs/:id/edit", isLoggedIn, function(req, res){
 
 
 app.get("/new", isLoggedIn, function(req, res){
-    res.render('new')
+    res.render('new', {user: req.user})
 })
 
 
@@ -118,6 +133,22 @@ app.post("/", isLoggedIn, function(req, res){
             newBlog.save((err, document) => {
                 if(err) console.error(err)
                 console.log(document)
+            })
+            User.findById(req.user._id, function(err, foundUser){
+                if(err){
+                    console.log(err)
+                    res.redirect("/")
+                }else{
+                    foundUser.blogs.push(newBlog._id)
+                    foundUser.save((err, document) => {
+                        if(err){
+                            console.error(err)
+                        }else{
+                            console.log(document)
+                        }
+                    })
+                    console.log("added a new blog to " + req.user.username)
+                }
             })
             res.redirect("/")
         }
