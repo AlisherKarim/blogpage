@@ -10,15 +10,15 @@ var app = express(),
 var Blog = require("./models/blog.js")
 var User = require("./models/User.js")
 //dotenv
-require('dotenv').config()
-
+var dotenv = require('dotenv')
+dotenv.config();
 
 app.set("view engine", "ejs")
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(methodoverride("_method"))
 //app.use(bodyParser.json())
 mongoose.set('useUnifiedTopology', true)
-mongoose.connect("mongodb+srv://glavnyi:qweqwe@cluster0.qnhsl.mongodb.net/blog-v2020?retryWrites=true&w=majority", {useNewUrlParser: true, 'useFindAndModify': false})
+mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, 'useFindAndModify': false})
 //now, let's check whether we have connected or not
 const db = mongoose.connection
 db.once("open", () => {
