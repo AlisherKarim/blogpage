@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>AKarim</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" rel = "stylesheet" type = "text/css">
+        <style type = "text/css">
+            .main.container{
+                margin-top: 7em;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <div class = "ui fixed inverted  menu">
+			<div class = "ui container">
+				<div class = "header item"><i class = "coffee icon"></i>Alish's Blog</div>
+				<a href = "/" class = "active item">Home Page</a>
+                <a href = "/blog" class = "item">My Posts</a>
+                <%if(user == null){%>
+                    <a href = "/login" class = "item right floated">Login</a>
+                    <a href = "/signup" class = "item floated">Register</a>
+                <%}else{%>
+                    <div class = "item right floated">
+                        Signed In as <%= user.username %>
+                    </div>
+                    <a class = "item floated" href = "/logout">Log Out</a>
+                <%}%>
+			</div>
+		</div>
+        

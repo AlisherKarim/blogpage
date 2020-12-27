@@ -1,0 +1,27 @@
+<%- include("partials/header") -%>
+
+
+<div class = "ui main container"> 
+    
+    <form class="ui form" action = "/" method = "POST">
+        <div class = "field">
+            <label>Blog Header</label>
+            <input type="text" name="header" placeholder="Enter the name for your post">
+        </div> 
+        <div class = "field">
+            <label>Image</label>
+            <input type="url" name="imageurl" placeholder="Enter the image URL for your post">
+        </div>
+        <div class = "field">
+            <label>Description</label>
+            <textarea name = "description"></textarea>
+        </div>
+        <button type = "submit" class = "ui green button">
+            Submit!
+        </button>
+    </form>
+    
+</div>
+
+
+<%- include("partials/footer") -%>

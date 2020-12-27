@@ -1,0 +1,46 @@
+<%- include("partials/header") -%>
+
+
+<div class = "ui main container"> 
+    
+    
+    <div class = "ui main text container">
+        <h1 class = "ui header">
+            <%= blog.name %>
+        <div class = "sub header">
+            2 days ago, by qalaiqalai
+        </div>
+    </h1>
+        <div class = "ui image container">
+            <img src = "<%= blog.image %>" class = "">    
+        </div>
+        <p>
+            <%= blog.description %>
+        </p>
+        <% if(user != null && blog.author.id.equals(user._id)){ %>
+            <div class = "ui container">
+
+
+                <a class="ui animated yellow button item" type = "button" href = "/blogs/<%= blog._id %>/edit">
+                  <div class="visible content"><i class="edit icon"></i></div>
+                  <div class="hidden content">
+                    Edit
+                  </div>
+                </a>
+                <form class = "ui form item" action = "/blogs/<%= blog.id %>?_method=DELETE" method = "POST">
+                    <button class="ui animated red button" tabindex="0" type = "submit">
+                      <div class="visible content"><i class="trash alternate icon"></i></div>
+                      <div class="hidden content">
+                        Delete
+                      </div>
+                    </button>
+                </form>
+
+            </div>
+        <%}%>
+    </div>
+    
+</div>
+
+
+<%- include("partials/footer") -%>

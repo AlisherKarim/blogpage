@@ -1,0 +1,49 @@
+<%- include("partials/header") -%>
+
+<div class = "ui main container">
+    <h1 class = "ui header">
+        Home Page
+        <div class = "sub header">
+            Be a part of the world ...
+        </div>
+    </h1>
+    <a type = "button" class = "ui floated right primary button" href = "/new">
+        Create!
+    </a>
+    
+    <div class="ui divided items container">
+        
+        <% for(var i = 0; i < blogs.length; i++){ %>
+        
+            <div class="item">
+                <div class="image">
+                    <img src="<%=blogs[i].image%>">
+                </div>
+                <div class="content">
+                    <a class="header" href = "/blogs/<%=blogs[i]._id %>"><%= blogs[i].name %></a>
+                    <div class="meta">
+                        <span>2 days ago</span>
+                        <p class="ui right floated meta">by <%= blogs[i].author.username %></p>  
+                    </div>
+                    <div class="description">
+                        <p>
+                        <%= blogs[i].description %>
+                        </p>
+                    </div>
+                    <div class="extra">
+                        <a href = "/blogs/<%=blogs[i]._id %>">Show more..</a>
+                    </div>
+                </div>
+            </div>
+        <%}%>
+        
+        
+        
+      
+    </div>
+    
+</div>
+
+
+
+<%- include("partials/footer") -%>
