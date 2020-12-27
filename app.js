@@ -9,6 +9,9 @@ var app = express(),
 //var MongoClient = require("mongodb").MongoClient
 var Blog = require("./models/blog.js")
 var User = require("./models/User.js")
+//dotenv
+require('dotenv').config()
+
 
 app.set("view engine", "ejs")
 app.use(bodyParser.urlencoded({extended: true}))
