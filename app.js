@@ -211,6 +211,6 @@ function alreadyLoggedIn(req, res, next){
     return next()
 }
 
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(process.env.PORT || 3000, process.env.IP, function(){
     console.log('app is running properly!...')
 })
