@@ -97,7 +97,7 @@ app.get("/blogs/:id/edit", isLoggedIn, function(req, res){
         if(err) console.error(err)
         else{
             if(foundBlog.author.id.equals(req.user._id)){
-                res.render("edit", {blog: foundBlog})
+                res.render("edit", {blog: foundBlog, user: req.user})
             }else{
                 console.log("You can't access the blog of another user!")
                 res.redirect("back");
